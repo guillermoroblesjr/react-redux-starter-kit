@@ -1,5 +1,5 @@
 // We only need to import the modules necessary for initial render
-import CoreLayout from '../layouts/PageLayout/PageLayout'
+import { Component as CoreLayout } from 'components/CoreLayout/async'
 import Home from './Home'
 import CounterRoute from './Counter'
 

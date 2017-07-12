@@ -1,16 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import _isEqual from 'lodash.isequal'
+import { IndexLink, Link } from 'react-router'
 import './CoreLayout.scss'
 
 export default class CoreLayout extends Component {
-  // static propTypes = {
+  static propTypes = {
+    children: PropTypes.node,
   //   reduxState: PropTypes.shape({
   //     router: PropTypes.object.isRequired,
   //   }),
   //   reduxActions: PropTypes.shape({
   //     actionName: PropTypes.func.isRequired,
   //   }),
-  // }
+  }
   // static defaultProps = {}
 
   constructor (props) {
@@ -27,7 +29,15 @@ export default class CoreLayout extends Component {
   render = () => {
     if (this.shouldRenderNull()) return null
     return (
-      <div className="CoreLayout">CoreLayout</div>
+      <div className="CoreLayout container text-center">
+        <h1>React Redux Starter Kit</h1>
+        <IndexLink to='/' activeClassName='page-layout__nav-item--active'>Home</IndexLink>
+        {' · '}
+        <Link to='/counter' activeClassName='page-layout__nav-item--active'>Counter</Link>
+        <div className='page-layout__viewport'>
+          {this.props.children}
+        </div>
+      </div>
     )
   }
 }
