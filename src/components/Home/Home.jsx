@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import _isEqual from 'lodash.isequal'
 import DuckImage from 'static/img/Duck.jpg'
-import ENV from 'utils/builds/environment'
-import { Component as Sample } from 'components/Sample/sync'
+import { Component as Sample } from 'components/Sample/async'
 import './Home.scss'
 
 export default class Home extends Component {
@@ -33,8 +32,7 @@ export default class Home extends Component {
       <div className="Home">
         <h4>Welcome!</h4>
         <img alt='This is a duck, because Redux!' className='duck' src={DuckImage} />
-        <p>{`Your current environment is: ${ENV}`}</p>
-        <Sample></Sample>
+        <Sample />
       </div>
     )
   }

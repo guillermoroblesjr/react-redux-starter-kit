@@ -33,7 +33,9 @@ export default class Sample extends Component {
   render = () => tryCatch(this, arguments, () => {
     console.log(ENV)
     return (
-      <div className="Sample">Sample</div>
+      <div className="Sample">
+        <p>{`Your current environment is: ${ENV}`}</p>
+      </div>
     )
   })
 }
