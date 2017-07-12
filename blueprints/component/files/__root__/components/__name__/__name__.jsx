@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import _isEqual from 'lodash.isEqual'
+import _isEqual from 'lodash.isequal'
 import './<%= pascalEntityName %>.scss'
 
 export default class <%= pascalEntityName %> extends Component {
