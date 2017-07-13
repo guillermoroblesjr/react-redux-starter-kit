@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const StringReplacePlugin = require('string-replace-webpack-plugin')
 const project = require('../project.config')
 
 const inProject = path.resolve.bind(path, project.basePath)
@@ -43,7 +44,8 @@ const config = {
       __DEV__,
       __TEST__,
       __PROD__,
-    }, project.globals))
+    }, project.globals)),
+    new StringReplacePlugin()
   ],
 }
 
@@ -86,6 +88,23 @@ config.module.rules.push({
       ]
     },
   }],
+})
+
+config.module.rules.push({
+  // Note: This should work for both Mac and Windows.
+  test: /src(\\|\/)utils(\\|\/)builds(\\|\/)environment\.(js)$/,
+  exclude: /node_modules/,
+  use: [{
+    loader: StringReplacePlugin.replace({
+      replacements: [{
+        pattern: /__ENV__/ig,
+        replacement(match, p1, offset, string) {
+          console.log(`MATCHED ENVIRONMENT ASSET: ${project.env}`)
+          return project.env
+        },
+      }],
+    }),
+  }]
 })
 
 // Styles
