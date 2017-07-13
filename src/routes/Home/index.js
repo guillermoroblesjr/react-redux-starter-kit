@@ -19,6 +19,6 @@ export default (store) => ({
       cb(null, HomeContainer)
 
     /* Webpack named bundle   */
-  }, 'HomeRoute')
+    }, 'HomeRoute')
   },
 })

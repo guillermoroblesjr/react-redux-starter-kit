@@ -1,7 +1,7 @@
 // import { injectReducer } from 'store/reducers'
 
 export default (store) => ({
-  path: '',
+  path: 'example',
   /*  Async getComponent is only invoked when route matches   */
   getComponent(nextState, cb) {
     /*  Webpack - use 'require.ensure' to create a split point
@@ -19,6 +19,16 @@ export default (store) => ({
       cb(null, ExampleContainer)
 
     /* Webpack named bundle   */
-  }, 'ExampleRoute')
+    }, 'ExampleRoute')
+  },
+})
+
+export const exampleOneParamRoute = (store) => ({
+  path: `example/:param1`,
+  getComponent(nextState, cb) {
+    require.ensure([], (require) => {
+      const ExampleContainer = require(`components/Example/async`).Container
+      cb(null, ExampleContainer)
+    }, `ExampleContainer`)
   },
 })

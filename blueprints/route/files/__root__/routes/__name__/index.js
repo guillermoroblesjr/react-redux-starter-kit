@@ -19,6 +19,6 @@ export default (store) => ({
       cb(null, <%= pascalEntityName %>Container)
 
     /* Webpack named bundle   */
-  }, '<%= pascalEntityName %>Route')
+    }, '<%= pascalEntityName %>Route')
   },
 })

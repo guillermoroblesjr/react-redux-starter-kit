@@ -1,7 +1,10 @@
 // We only need to import the modules necessary for initial render
 import { Component as CoreLayout } from 'components/CoreLayout/async'
-import Home from './Home'
-import CounterRoute from './Counter'
+import home from './Home'
+import counterRoute from './Counter'
+import example, {
+    exampleOneParamRoute,
+  } from './Example'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -9,9 +12,11 @@ import CounterRoute from './Counter'
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
-  indexRoute  : Home(store),
+  indexRoute  : home(store),
   childRoutes : [
-    CounterRoute(store)
+    counterRoute(store),
+    example(store),
+    exampleOneParamRoute(store),
   ]
 })
 
