@@ -10,14 +10,14 @@ import example, {
     PlainRoute objects to build route definitions.   */
 
 export const createRoutes = (store) => ({
-  path        : '/',
-  component   : CoreLayout,
-  indexRoute  : home(store),
-  childRoutes : [
+  path: `/`,
+  component: CoreLayout,
+  indexRoute: home(store),
+  childRoutes: [
     counterRoute(store),
     example(store),
     exampleOneParamRoute(store),
-  ]
+  ],
 })
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically

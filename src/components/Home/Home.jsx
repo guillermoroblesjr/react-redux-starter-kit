@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import _isEqual from 'lodash.isequal'
 import DuckImage from 'static/img/Duck.jpg'
-import { Component as Sample } from 'components/Sample/async'
 import './Home.scss'
 
 export default class Home extends Component {
@@ -15,7 +14,7 @@ export default class Home extends Component {
   // }
   // static defaultProps = {}
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.fileIdentifier = `Home.jsx`
     this.state = {}
@@ -31,8 +30,7 @@ export default class Home extends Component {
     return (
       <div className="Home">
         <h4>Welcome!</h4>
-        <img alt='This is a duck, because Redux!' className='duck' src={DuckImage} />
-        <Sample />
+        <img alt="This is a duck, because Redux!" className="duck" src={DuckImage} />
       </div>
     )
   }

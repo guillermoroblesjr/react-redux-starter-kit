@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import _isEqual from 'lodash.isequal'
 import { tryCatch } from 'utils/debug'
+import { Component as Sample } from 'components/Sample/async'
 import './Example.scss'
 
 export default class Example extends Component {
@@ -14,7 +15,7 @@ export default class Example extends Component {
   // }
   // static defaultProps = {}
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.fileIdentifier = `Example.jsx`
     this.state = {}
@@ -34,7 +35,9 @@ export default class Example extends Component {
   render = () => {
     if (this.shouldRenderNull()) return null
     return (
-      <div className="Example">Example</div>
+      <div className="Example">
+        <Sample />
+      </div>
     )
   }
 }

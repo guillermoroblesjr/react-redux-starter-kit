@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import _isEqual from 'lodash.isequal'
 import { tryCatch } from 'utils/debug'
 import ENV from 'utils/builds/environment'
@@ -15,7 +16,7 @@ export default class Sample extends Component {
   }
   // static defaultProps = {}
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.fileIdentifier = `Sample.jsx`
     this.state = {}
@@ -30,11 +31,9 @@ export default class Sample extends Component {
   componentDidUpdate = (prevProps, prevState) => tryCatch(this, arguments, () => {})
   componentWillUnmount = () => tryCatch(this, arguments, () => {})
 
-  render = () => tryCatch(this, arguments, () => {
-    return (
-      <div className="Sample">
-        <p>{`Your current environment is: ${ENV}`}</p>
-      </div>
-    )
-  })
+  render = () => tryCatch(this, arguments, () => (
+    <div className="Sample">
+      <p>{`Your current environment is: ${ENV}`}</p>
+    </div>
+    ))
 }

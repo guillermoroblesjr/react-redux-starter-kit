@@ -9,7 +9,7 @@ import { updateLocation } from './location'
 import ENV from 'utils/builds/environment'
 
 let createLogger
-if (ENV !== `production`) {
+if (ENV === `development`) {
   createLogger = require(`redux-logger`).createLogger
 }
 
@@ -19,7 +19,7 @@ const createStore = (initialState = {}) => {
   // ======================================================
   const middleware = [thunk, routerMiddleware(history), promise()]
 
-  if (ENV !== `production`) {
+  if (ENV === `development`) {
     middleware.push(createLogger())
   }
 
@@ -27,7 +27,7 @@ const createStore = (initialState = {}) => {
   // Store Enhancers
   // ======================================================
   const enhancers = [persistState([
-    // `reducer_key_name_goes_here`,
+    // `counter`,
   ])]
   let composeEnhancers = compose
 
