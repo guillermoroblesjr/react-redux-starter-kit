@@ -31,7 +31,6 @@ export default class Sample extends Component {
   componentWillUnmount = () => tryCatch(this, arguments, () => {})
 
   render = () => tryCatch(this, arguments, () => {
-    console.log(ENV)
     return (
       <div className="Sample">
         <p>{`Your current environment is: ${ENV}`}</p>
