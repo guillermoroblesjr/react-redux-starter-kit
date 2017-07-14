@@ -1,12 +1,10 @@
-import { Promise } from 'rsvp'
 import { connect } from 'react-redux'
 
-const promisesBundles =  {
+const promisesBundles = {
   SampleContainer: new Promise((resolve, reject) => {
     require.ensure([], () => {
-
-      const mapDispatchToProps = require('components/Sample/SampleContainer').mapDispatchToProps
-      const mapStateToProps = require('components/Sample/SampleContainer').mapStateToProps
+      const mapDispatchToProps = require(`components/Sample/SampleContainer`).mapDispatchToProps
+      const mapStateToProps = require(`components/Sample/SampleContainer`).mapStateToProps
 
       resolve({
         mapDispatchToProps,
@@ -15,19 +13,19 @@ const promisesBundles =  {
       })
 
       /* Webpack named bundle   */
-    }, 'SampleContainer')
+    }, `SampleContainer`)
   }),
   Sample: new Promise((resolve, reject) => {
     require.ensure([], () => {
-      const Sample = require('components/Sample/Sample').default
+      const Sample = require(`components/Sample/Sample`).default
 
       resolve({
-        Sample
+        Sample,
       })
 
       /* Webpack named bundle   */
-    }, 'Sample')
-  })
+    }, `Sample`)
+  }),
 }
 
 export default promisesBundles
