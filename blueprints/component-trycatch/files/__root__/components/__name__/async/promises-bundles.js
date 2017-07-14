@@ -1,4 +1,3 @@
-import { Promise } from 'rsvp'
 import { connect } from 'react-redux'
 
 const promisesBundles =  {

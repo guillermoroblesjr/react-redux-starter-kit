@@ -1,12 +1,10 @@
-import { Promise } from 'rsvp'
 import { connect } from 'react-redux'
 
-const promisesBundles =  {
+const promisesBundles = {
   CoreLayoutContainer: new Promise((resolve, reject) => {
     require.ensure([], () => {
-
-      const mapDispatchToProps = require('components/CoreLayout/CoreLayoutContainer').mapDispatchToProps
-      const mapStateToProps = require('components/CoreLayout/CoreLayoutContainer').mapStateToProps
+      const mapDispatchToProps = require(`components/CoreLayout/CoreLayoutContainer`).mapDispatchToProps
+      const mapStateToProps = require(`components/CoreLayout/CoreLayoutContainer`).mapStateToProps
 
       resolve({
         mapDispatchToProps,
@@ -15,19 +13,19 @@ const promisesBundles =  {
       })
 
       /* Webpack named bundle   */
-    }, 'CoreLayoutContainer')
+    }, `CoreLayoutContainer`)
   }),
   CoreLayout: new Promise((resolve, reject) => {
     require.ensure([], () => {
-      const CoreLayout = require('components/CoreLayout/CoreLayout').default
+      const CoreLayout = require(`components/CoreLayout/CoreLayout`).default
 
       resolve({
-        CoreLayout
+        CoreLayout,
       })
 
       /* Webpack named bundle   */
-    }, 'CoreLayout')
-  })
+    }, `CoreLayout`)
+  }),
 }
 
 export default promisesBundles

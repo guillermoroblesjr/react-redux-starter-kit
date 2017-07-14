@@ -1,4 +1,4 @@
-import { hash } from 'rsvp'
+import hash from 'utils/promises/hash'
 import promisesBundles from './promises-bundles'
 
 export const containerLoader = () => {
