@@ -27,6 +27,7 @@
     "lodash.isequal": "^4.5.0",
     "object-assign": "^4.1.1",
     "promise": "^7.1.1",
+    "promise-hash": "^1.2.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

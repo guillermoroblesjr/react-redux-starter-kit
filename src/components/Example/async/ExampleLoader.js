@@ -1,4 +1,4 @@
-import hash from 'utils/promises/hash'
+import hash from 'promise-hash'
 import promisesBundles from './promises-bundles'
 
 export const containerLoader = () => {
