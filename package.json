@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "3.0.1",
-  "description": "Get started with React, Redux, and React-Router!",
+  "name": "react-redux-component-starter-kit",
+  "version": "0.0.1-alpha",
+  "description": "Build components that can be published as npm modules",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
@@ -16,9 +16,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davezuko/react-redux-starter-kit.git"
+    "url": "git+https://github.com/guillermoroblesjr/react-redux-starter-kit.git"
   },
-  "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
+  "author": "Guillermo Robles Jr <will.robles@gmail.com> (http://GuillermoRoblesJr.com)",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha",
