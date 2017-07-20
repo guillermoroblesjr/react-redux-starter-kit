@@ -156,9 +156,6 @@ config.module.rules.push({
         loader: `postcss-loader`,
         options: {
           sourceMap: project.sourcemaps,
-          includePaths: [
-            inProjectSrc(`styles`),
-          ],
           plugins: [
             // this will add !important to all style declarations which allows us to remove
             // 3rd party styling issues
