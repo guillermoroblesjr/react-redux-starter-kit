@@ -33,7 +33,7 @@
     "promise": "^7.1.1",
     "promise-hash": "^1.2.0",
     "prop-types": "^15.5.10",
-    "react": "^15.5.4",
+    "react": "^15.6.2",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router": "^3.0.0",
