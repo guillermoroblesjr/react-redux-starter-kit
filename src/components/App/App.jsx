@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { browserHistory, Router } from 'react-router'
 import { Provider } from 'react-redux'
 import PropTypes from 'prop-types'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+
+const theme = createMuiTheme()
 
 export default class App extends Component {
   static propTypes = {
@@ -9,7 +12,7 @@ export default class App extends Component {
     routes: PropTypes.object.isRequired,
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.fileIdentifier = `App.jsx`
     this.state = {}
@@ -17,13 +20,13 @@ export default class App extends Component {
 
   shouldComponentUpdate = () => false
 
-  render = () => {
-    return (
-      <Provider store={this.props.store}>
-        <div style={{ height: '100%' }}>
+  render = () => (
+    <Provider store={this.props.store}>
+      <div style={{ height: `100%` }}>
+        <MuiThemeProvider theme={theme}>
           <Router history={browserHistory} children={this.props.routes} />
-        </div>
-      </Provider>
-    )
-  }
+        </MuiThemeProvider>
+      </div>
+    </Provider>
+  )
 }

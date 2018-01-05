@@ -1,9 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import _isEqual from 'lodash.isequal'
 import DuckImage from 'static/img/Duck.jpg'
-import './Home.scss'
+import { withStyles } from 'material-ui/styles'
 
-export default class Home extends Component {
+const styles = theme => ({
+  root: {},
+  duck: {
+    display: `block`,
+    width: `120px`,
+    margin: `1.5rem auto`,
+  },
+})
+
+class Home extends Component {
   // static propTypes = {
   //   reduxState: PropTypes.shape({
   //     router: PropTypes.object.isRequired,
@@ -27,11 +36,14 @@ export default class Home extends Component {
 
   render = () => {
     if (this.shouldRenderNull()) return null
+    const { classes } = this.props
     return (
-      <div className="Home">
+      <div className={[`Home`, classes.root].join(` `)}>
         <h4>Welcome!</h4>
-        <img alt="This is a duck, because Redux!" className="duck" src={DuckImage} />
+        <img alt="This is a duck, because Redux!" className={classes.duck} src={DuckImage} />
       </div>
     )
   }
 }
+
+export default withStyles(styles)(Home)

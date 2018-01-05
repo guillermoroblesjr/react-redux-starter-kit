@@ -2,17 +2,24 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import _isEqual from 'lodash.isequal'
 import { IndexLink, Link } from 'react-router'
-import './CoreLayout.scss'
+import { withStyles } from 'material-ui/styles'
 
-export default class CoreLayout extends Component {
+const styles = theme => ({
+  root: {
+    textAlign: `center`,
+  },
+  activeLink: {
+    fontWeight: `bold`,
+    textDecoration: `underline`,
+  },
+  viewPort: {
+    paddingTop: `4rem`,
+  },
+})
+
+class CoreLayout extends Component {
   static propTypes = {
     children: PropTypes.node,
-    // reduxState: PropTypes.shape({
-    //   router: PropTypes.object.isRequired,
-    // }),
-    // reduxActions: PropTypes.shape({
-    //   actionName: PropTypes.func.isRequired,
-    // }),
   }
   // static defaultProps = {}
 
@@ -29,18 +36,21 @@ export default class CoreLayout extends Component {
 
   render = () => {
     if (this.shouldRenderNull()) return null
+    const { classes } = this.props
     return (
-      <div className="CoreLayout container text-center">
+      <div className={[`CoreLayout`, classes.root].join(` `)}>
         <h1>React Redux Starter Kit</h1>
-        <IndexLink to="/" activeClassName="page-layout__nav-item--active">Home</IndexLink>
+        <IndexLink to="/" activeClassName={classes.activeLink}>Home</IndexLink>
         {` · `}
-        <Link to="/counter" activeClassName="page-layout__nav-item--active">Counter</Link>
+        <Link to="/counter" activeClassName={classes.activeLink}>Counter</Link>
         {` · `}
-        <Link to="/example" activeClassName="page-layout__nav-item--active">Example</Link>
-        <div className="page-layout__viewport">
+        <Link to="/example" activeClassName={classes.activeLink}>Example</Link>
+        <div className={classes.viewPort}>
           {this.props.children}
         </div>
       </div>
     )
   }
 }
+
+export default withStyles(styles)(CoreLayout)

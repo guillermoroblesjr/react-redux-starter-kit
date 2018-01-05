@@ -2,7 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
 import { Component as App } from 'components/App/sync'
-import './styles/main.scss'
+// import './styles/main.scss'
+import 'typeface-roboto'
+import 'normalize.css'
 
 // Store Initialization
 // ------------------------------------
@@ -10,10 +12,10 @@ const store = createStore(window.__INITIAL_STATE__)
 
 // Render Setup
 // ------------------------------------
-const MOUNT_NODE = document.getElementById('root')
+const MOUNT_NODE = document.getElementById(`root`)
 
 let render = () => {
-  const routes = require('./routes/index').default(store)
+  const routes = require(`./routes/index`).default(store)
 
   ReactDOM.render(
     <App store={store} routes={routes} />,
@@ -27,7 +29,7 @@ if (__DEV__) {
   if (module.hot) {
     const renderApp = render
     const renderError = (error) => {
-      const RedBox = require('redbox-react').default
+      const RedBox = require(`redbox-react`).default
 
       ReactDOM.render(<RedBox error={error} />, MOUNT_NODE)
     }
@@ -35,7 +37,8 @@ if (__DEV__) {
     render = () => {
       try {
         renderApp()
-      } catch (e) {
+      }
+      catch (e) {
         console.error(e)
         renderError(e)
       }
@@ -43,8 +46,8 @@ if (__DEV__) {
 
     // Setup hot module replacement
     module.hot.accept([
-      './components/App/sync',
-      './routes/index',
+      `./components/App/sync`,
+      `./routes/index`,
     ], () =>
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)

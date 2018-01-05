@@ -2,9 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import _isEqual from 'lodash.isequal'
 import { tryCatch } from 'utils/debug'
 import { Component as Sample } from 'components/Sample/async'
-import './Example.scss'
+import { withStyles } from 'material-ui/styles'
 
-export default class Example extends Component {
+const styles = theme => ({
+  root: {},
+})
+
+class Example extends Component {
   // static propTypes = {
   //   reduxState: PropTypes.shape({
   //     router: PropTypes.object.isRequired,
@@ -34,10 +38,13 @@ export default class Example extends Component {
 
   render = () => {
     if (this.shouldRenderNull()) return null
+    const { classes } = this.props
     return (
-      <div className="Example">
+      <div className={[`Example`, classes.root].join(` `)}>
         <Sample />
       </div>
     )
   }
 }
+
+export default withStyles(styles)(Example)

@@ -3,9 +3,16 @@ import PropTypes from 'prop-types'
 import _isEqual from 'lodash.isequal'
 import { tryCatch } from 'utils/debug'
 import ENV from 'utils/builds/environment'
-import './Sample.scss'
+import { withStyles } from 'material-ui/styles'
 
-export default class Sample extends Component {
+const styles = theme => ({
+  root: {},
+  hidden: {
+    display: `none`,
+  },
+})
+
+class Sample extends Component {
   static propTypes = {
     reduxState: PropTypes.shape({
       // router: PropTypes.object.isRequired,
@@ -41,27 +48,33 @@ export default class Sample extends Component {
     })
   }
 
-  render = () => tryCatch(this, arguments, () => (
-    <div className="Sample">
-      <div>{`Please click button continue`}</div>
-      <button
-        className={[`btn`, `primary`].join(` `)} onClick={() => {
-          this.nextButtonOnClick()
-        }}
-      >Next</button>
+  render = () => tryCatch(this, arguments, () => {
+    const { classes } = this.props
 
-      <div
-        className={[
-          this.state.showTextareaForm
-          ? null
-          : `hidden`,
-        ].join(` `)}
-      >
-        <h3>{`Please enter random text`}</h3>
-        <textarea rows="10" cols="30" />
+    return (
+      <div className={[`Sample`, classes.root].join(` `)}>
+        <div>{`Please click button continue`}</div>
+        <button
+          onClick={() => {
+            this.nextButtonOnClick()
+          }}
+        >Next</button>
+
+        <div
+          className={[
+            this.state.showTextareaForm
+            ? null
+            : classes.hidden,
+          ].join(` `)}
+        >
+          <h3>{`Please enter random text`}</h3>
+          <textarea rows="10" cols="30" />
+        </div>
+
+        <p>{`Your current environment is: ${ENV}`}</p>
       </div>
-
-      <p>{`Your current environment is: ${ENV}`}</p>
-    </div>
-    ))
+    )
+  })
 }
+
+export default withStyles(styles)(Sample)

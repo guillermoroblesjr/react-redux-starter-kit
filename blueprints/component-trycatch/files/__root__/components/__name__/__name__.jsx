@@ -2,16 +2,17 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import _isEqual from 'lodash.isequal'
 import { tryCatch } from 'utils/debug'
-import './<%= pascalEntityName %>.scss'
+import { withStyles } from 'material-ui/styles'
 
-export default class <%= pascalEntityName %> extends Component {
+const styles = theme => ({
+  root: {},
+})
+
+class <%= pascalEntityName %> extends Component {
   // static propTypes = {
-  //   reduxState: PropTypes.shape({
-  //     router: PropTypes.object.isRequired,
-  //   }),
-  //   reduxActions: PropTypes.shape({
-  //     actionName: PropTypes.func.isRequired,
-  //   }),
+  //   router: PropTypes.shape({}).isRequired,
+  //   stateName: PropTypes.shape({}).isRequired,
+  //   actionName: PropTypes.func.isRequired,
   // }
   // static defaultProps = {}
 
@@ -34,8 +35,11 @@ export default class <%= pascalEntityName %> extends Component {
 
   render = () => {
     if (this.shouldRenderNull()) return null
+    const { classes } = this.props
     return (
-      <div className="<%= pascalEntityName %>"><%= pascalEntityName %></div>
+      <div className={[`<%= pascalEntityName %>`, classes.root].join(` `)}><%= pascalEntityName %></div>
     )
   }
 }
+
+export default withStyles(styles)(<%= pascalEntityName %>)

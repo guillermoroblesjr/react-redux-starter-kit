@@ -3,7 +3,8 @@ const webpack = require(`webpack`)
 const HtmlWebpackPlugin = require(`html-webpack-plugin`)
 const ExtractTextPlugin = require(`extract-text-webpack-plugin`)
 const StringReplacePlugin = require(`string-replace-webpack-plugin`)
-const safeImportant = require(`postcss-safe-important`)
+// const safeImportant = require(`postcss-safe-important`)
+
 
 const project = require(`../project.config`)
 
@@ -118,7 +119,7 @@ const extractStyles = new ExtractTextPlugin({
 })
 
 config.module.rules.push({
-  test: /\.(sass|scss)$/,
+  test: /\.(sass|scss|css)$/,
   loader: extractStyles.extract({
     fallback: `style-loader`,
     use: [
@@ -159,7 +160,7 @@ config.module.rules.push({
           plugins: [
             // this will add !important to all style declarations which allows us to remove
             // 3rd party styling issues
-            safeImportant(),
+            // safeImportant(),
           ],
         },
       },
