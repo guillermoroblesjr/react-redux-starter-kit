@@ -13,14 +13,11 @@ const styles = theme => ({
 })
 
 class Sample extends Component {
-  static propTypes = {
-    reduxState: PropTypes.shape({
-      // router: PropTypes.object.isRequired,
-    }),
-    reduxActions: PropTypes.shape({
-      // actionName: PropTypes.func.isRequired,
-    }),
-  }
+  // static propTypes = {
+  //   router: PropTypes.shape({}).isRequired,
+  //   stateName: PropTypes.shape({}).isRequired,
+  //   actionName: PropTypes.func.isRequired,
+  // }
   // static defaultProps = {}
 
   constructor(props) {
