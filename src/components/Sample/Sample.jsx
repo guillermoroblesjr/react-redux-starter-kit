@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import _isEqual from 'lodash.isequal'
-import { tryCatch } from 'utils/debug'
+import { traceStack } from 'utils/debug'
 import ENV from 'utils/builds/environment'
 import { withStyles } from 'material-ui/styles'
 
@@ -28,15 +28,15 @@ class Sample extends Component {
     }
   }
 
-  // componentWillMount = () => tryCatch(this, arguments, () => {})
-  // componentDidMount = () => tryCatch(this, arguments, () => {})
-  // componentWillReceiveProps = nextProps => tryCatch(this, arguments, () => {})
+  // componentWillMount = () => traceStack(this, arguments, () => {})
+  // componentDidMount = () => traceStack(this, arguments, () => {})
+  // componentWillReceiveProps = nextProps => traceStack(this, arguments, () => {})
   shouldComponentUpdate = (nextProps, nextState) =>
     !_isEqual(this.props, nextProps) || !_isEqual(this.state, nextState)
 
-  // componentWillUpdate = (nextProps, nextState) => tryCatch(this, arguments, () => {})
-  // componentDidUpdate = (prevProps, prevState) => tryCatch(this, arguments, () => {})
-  // componentWillUnmount = () => tryCatch(this, arguments, () => {})
+  // componentWillUpdate = (nextProps, nextState) => traceStack(this, arguments, () => {})
+  // componentDidUpdate = (prevProps, prevState) => traceStack(this, arguments, () => {})
+  // componentWillUnmount = () => traceStack(this, arguments, () => {})
 
   nextButtonOnClick = () => {
     console.log(`clicked button`)
@@ -45,7 +45,7 @@ class Sample extends Component {
     })
   }
 
-  render = () => tryCatch(this, arguments, () => {
+  render = () => traceStack(this, arguments, () => {
     const { classes } = this.props
 
     return (

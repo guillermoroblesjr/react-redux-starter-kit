@@ -1,25 +1,17 @@
 import React from 'react'
-// import ENV from 'utils/builds/environment'
-const ENV = `dev`
+import ENV from 'utils/builds/environment'
 
-export const tryCatch = (that, args, fn) => {
-  if (ENV === `prod` || ENV === `production`) {
-    // return fn.apply(that, args)
+export const traceStack = (that, args, fn) => {
+  if (ENV === `dev` || ENV === `development` || `local`) {
     try {
       return fn.apply(that, args)
     }
     catch (e) {
       console.log(e)
     }
-    return null
+
+    return (<h1>Oops! Something went wrong.</h1>)
   }
 
-  try {
-    return fn.apply(that, args)
-  }
-  catch (e) {
-    console.log(e)
-  }
-
-  return (<h1>Oops! Something went wrong.</h1>)
+  return fn.apply(that, args)
 }
